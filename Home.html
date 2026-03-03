@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ReWear - Sustainable Fashion</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="Home.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-container">
+      <div class="logo">
+        <span class="logo-text">ReWear</span>
+        <span class="logo-leaf">♻</span>
+      </div>
+
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="customer/customer-auth.html" class="nav-link">Shop</a></li>
+          <li><a href="seller/seller-auth.html" class="nav-link">Sell</a></li>
+          <li><a href="/how-it-works" class="nav-link">How it Works</a></li>
+          <li><a href="/about" class="nav-link">About</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="customer/customer-auth.html" class="btn btn-outline">Customer Login</a>
+        <a href="customer/customer-auth.html" class="btn btn-primary">Customer Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          Fashion that doesn't cost <br/>
+          the <span class="highlight">Earth</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Buy and sell preloved clothes. Give your wardrobe a second life 
+          and help reduce fashion waste — one garment at a time.
+        </p>
+
+        <div class="hero-cta">
+          <a href="seller/seller-auth.html" class="btn btn-primary btn-large">Sell Your Clothes</a>
+          <a href="customer/customer-auth.html" class="btn btn-outline btn-large">Browse Recycled Fashion</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">12k+</span>
+            <span class="stat-label">Items listed</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">4.7t</span>
+            <span class="stat-label">CO₂ saved</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">8.9k</span>
+            <span class="stat-label">Happy users</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image-container">
+        <div class="hero-image-placeholder">
+          <div class="floating-clothes">
+            <div class="clothes-item item-1"></div>
+            <div class="clothes-item item-2"></div>
+            <div class="clothes-item item-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Section: Who Can Join ReWear -->
+  <section class="roles-section">
+    <div class="container">
+      <h2 class="section-title">Who Can Join ReWear?</h2>
+      <p class="section-subtitle">Everyone has a role in building a more circular fashion future</p>
+
+      <div class="roles-grid">
+        <!-- Seller -->
+        <div class="role-card">
+          <div class="role-icon">👕</div>
+          <h3>Seller</h3>
+          <p>Turn your unused clothes into cash. List items in minutes, earn money, and give your wardrobe a second life.</p>
+          <a href="seller/seller-auth.html" class="role-btn">Start Selling →</a>
+        </div>
+
+        <!-- Customer / Buyer -->
+        <div class="role-card">
+          <div class="role-icon">🛍️</div>
+          <h3>Customer</h3>
+          <p>Discover unique preloved pieces at great prices. Shop sustainably and build a more responsible wardrobe.</p>
+          <a href="customer/customer-auth.html" class="role-btn">Start Shopping →</a>
+        </div>
+
+        <!-- Manufacturer / Brand -->
+        <div class="role-card">
+          <div class="role-icon">🏭</div>
+          <h3>Manufacturer / Brand</h3>
+          <p>Partner with us to take back your products, offer repair services, or sell certified refurbished items.</p>
+          <a href="Manufacturer/manufacturer-login.html" class="role-btn">Partner With Us →</a>
+        </div>
+
+        <!-- Delivery Partner -->
+        <div class="role-card">
+          <div class="role-icon">🚚</div>
+          <h3>Delivery Partner</h3>
+          <p>Join our network of eco-conscious delivery partners. Help us reduce carbon footprint with green logistics.</p>
+          <a href="Delivery Partner/delivery-partner-auth.html.html" class="role-btn">Become a Partner →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-logo">
+        <span class="logo-text">ReWear</span>
+        <span class="logo-leaf">♻</span>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>Platform</h4>
+          <ul>
+            <li><a href="seller/seller-auth.html">Sell</a></li>
+            <li><a href="customer/customer-auth.html">Shop</a></li>
+            <li><a href="/how-it-works">How it Works</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/sustainability">Sustainability</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/terms">Terms of Service</a></li>
+            <li><a href="/privacy">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© <span id="year"></span> ReWear. All rights reserved.</p>
+        <p class="eco-message">Made with ♡ for a more sustainable fashion future</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

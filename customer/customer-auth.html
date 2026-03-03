@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Customer Login & Sign Up - ReWear</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="customer-auth.css">
+</head>
+<body>
+
+  <!-- Minimal Header -->
+  <header class="header">
+    <div class="header-container">
+      <!-- Fixed: correct relative path from /seller/ folder to root -->
+      <a href="../home.html" class="logo">
+        <span class="logo-text">ReWear</span>
+        <span class="logo-leaf">♻</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Authentication Card -->
+  <main class="auth-wrapper">
+    <div class="auth-card">
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <div class="tab active" data-tab="login">Login</div>
+        <div class="tab" data-tab="signup">Sign Up</div>
+      </div>
+
+      <!-- Login Form -->
+      <div class="form-content" id="login-form">
+        <h1>Customer Login</h1>
+        <p class="subtitle">Welcome back! Let's continue sustainable shopping</p>
+
+        <form>
+          <div class="form-group">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" placeholder="you@example.com" required autocomplete="email">
+          </div>
+
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" placeholder="••••••••" required autocomplete="current-password">
+          </div>
+
+          <button type="submit" class="btn-primary">Login</button>
+        </form>
+
+        <div class="switch-text">
+          New to ReWear? <a href="#" data-switch="signup">Create a customer account</a>
+        </div>
+      </div>
+
+      <!-- Signup Form -->
+      <div class="form-content form-hidden" id="signup-form">
+        <h1>Customer Sign Up</h1>
+        <p class="subtitle">Join the movement for more sustainable fashion</p>
+
+        <form>
+          <div class="form-group">
+            <label for="signup-name">Full Name</label>
+            <input type="text" id="signup-name" placeholder="Priya Sharma" required autocomplete="name">
+          </div>
+
+          <div class="form-group">
+            <label for="signup-email">Email</label>
+            <input type="email" id="signup-email" placeholder="you@example.com" required autocomplete="email">
+          </div>
+
+          <div class="form-group">
+            <label for="signup-phone">Phone Number</label>
+            <input type="tel" id="signup-phone" placeholder="+91 98765 43210" required autocomplete="tel">
+          </div>
+
+          <div class="form-group">
+            <label for="signup-password">Password</label>
+            <input type="password" id="signup-password" placeholder="••••••••" required autocomplete="new-password">
+          </div>
+
+          <div class="form-group">
+            <label for="signup-confirm">Confirm Password</label>
+            <input type="password" id="signup-confirm" placeholder="••••••••" required autocomplete="new-password">
+          </div>
+
+          <button type="submit" class="btn-primary">Create Account</button>
+
+          <div class="terms-note">
+            By signing up, you agree to our 
+            <a href="/terms">Terms of Service</a> & 
+            <a href="/privacy">Privacy Policy</a>
+          </div>
+        </form>
+
+        <div class="switch-text">
+          Already have an account? <a href="#" data-switch="login">Login here</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="customer-auth.js"></script>
+</body>
+</html>
