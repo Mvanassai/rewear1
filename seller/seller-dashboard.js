@@ -1,106 +1,99 @@
-// seller-dashboard.js
-// Single consolidated script for ReWear seller dashboard
-
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ── Logout ─────────────────────────────────────
   const logoutBtn = document.getElementById('logout-btn');
+
   if (logoutBtn) {
     logoutBtn.addEventListener('click', () => {
-      if (confirm('Are you sure you want to logout?')) {
-        window.location.href = 'seller-auth.html';
-      }
+      localStorage.removeItem("sellerEmail");
+      window.location.href = "seller-auth.html";
     });
   }
 
-  // ── Add Cloth Form elements ─────────────────────
-  const form          = document.getElementById('add-cloth-form');
-  const locationBtn   = document.getElementById('get-location');
+  const form = document.getElementById('add-cloth-form');
+  const locationBtn = document.getElementById('get-location');
   const locationInput = document.getElementById('location');
-  const successMsg    = document.getElementById('success-message');
+  const successMsg = document.getElementById('success-message');
 
-  // ── Get current location ────────────────────────
-  if (locationBtn && locationInput) {
+  // LOCATION
+  if (locationBtn) {
     locationBtn.addEventListener('click', () => {
 
-      if (!navigator.geolocation) {
-        alert("Geolocation is not supported by your browser.");
-        return;
-      }
+      navigator.geolocation.getCurrentPosition((pos) => {
 
-      locationBtn.disabled = true;
-      locationBtn.textContent = "Detecting...";
+        const lat = pos.coords.latitude;
+        const lon = pos.coords.longitude;
 
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          locationInput.value = `Lat: ${latitude.toFixed(6)}, Lon: ${longitude.toFixed(6)}`;
-          locationBtn.disabled = false;
-          locationBtn.textContent = "Use My Location";
-        },
-        (error) => {
-          let msg = "Unable to get location.";
-          if (error.code === 1) msg = "Location permission denied.";
-          else if (error.code === 2) msg = "Location unavailable.";
-          else if (error.code === 3) msg = "Location request timed out.";
-          alert(msg);
-          locationBtn.disabled = false;
-          locationBtn.textContent = "Use My Location";
-        },
-        {
-          enableHighAccuracy: true,
-          timeout: 10000,
-          maximumAge: 0
-        }
-      );
-    });
-  }
+        locationInput.value = `Lat:${lat}, Lon:${lon}`;
 
-  // ── Form submission ─────────────────────────────
-  if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      if (!locationInput?.value.trim()) {
-        alert("Please detect your current location first.");
-        return;
-      }
-
-      const formData = new FormData(form);
-
-      try {
-
-        // ✅ Updated fetch URL (as you requested)
-        const response = await fetch("http://127.0.0.1:5000/api/seller/add-cloth", {
-          method: "POST",
-          body: formData
-        });
-
-        const result = await response.json();
-
-        if (response.ok && result.success) {
-
-          if (successMsg) {
-            successMsg.textContent = result.message || "Cloth added successfully!";
-            successMsg.classList.remove('d-none');
-            setTimeout(() => successMsg.classList.add('d-none'), 5000);
-          } else {
-            alert(result.message || "Cloth added successfully!");
-          }
-
-          form.reset();
-          locationInput.value = '';
-
-        } else {
-          alert(result.message || result.error || "Failed to add cloth.");
-        }
-
-      } catch (err) {
-        console.error('Form submission error:', err);
-        alert("Network error. Please check connection.");
-      }
+      });
 
     });
   }
+
+  // ADD CLOTH
+  form.addEventListener('submit', async (e) => {
+
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    // ✅ ADD SELLER EMAIL
+    const sellerEmail = localStorage.getItem("sellerEmail");
+    formData.append("seller_email", sellerEmail);
+
+    const res = await fetch("http://127.0.0.1:5000/api/seller/add-cloth", {
+
+      method: "POST",
+      body: formData
+
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+
+      successMsg.classList.remove("d-none");
+      form.reset();
+
+      loadSellerClothes();
+
+    } else {
+
+      alert(data.message);
+
+    }
+
+  });
+
+  const sellerTable = document.getElementById("seller-cloth-table");
+
+  async function loadSellerClothes(){
+
+    const sellerEmail = localStorage.getItem("sellerEmail");
+
+    const res = await fetch(`http://127.0.0.1:5000/api/seller/my-clothes?email=${sellerEmail}`);
+
+    const data = await res.json();
+
+    sellerTable.innerHTML = "";
+
+    data.forEach(cloth => {
+
+      const row = `
+      <tr>
+      <td>${cloth.name}</td>
+      <td>${cloth.category}</td>
+      <td>₹${cloth.price}</td>
+      <td>${cloth.status}</td>
+      </tr>
+      `;
+
+      sellerTable.innerHTML += row;
+
+    });
+
+  }
+
+  loadSellerClothes();
 
 });

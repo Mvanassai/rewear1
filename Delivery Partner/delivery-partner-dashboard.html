@@ -1,221 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Delivery Partner Dashboard – ReWear</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Delivery Partner Dashboard – ReWear</title>
 
-  <link rel="stylesheet" href="delivery-partner-dashboard.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="delivery-partner-dashboard.css">
 </head>
+
 <body>
 
-  <!-- Header -->
-  <header class="dashboard-header">
-    <div class="header-container">
-      <a href="../home.html" class="logo">
-        <span class="logo-text">ReWear</span>
-        <span class="logo-leaf">♻</span>
-      </a>
-      <div class="header-right">
-        <span class="partner-name">Hi, Delivery Partner</span>
-        <button id="logout-btn" class="btn-logout">Logout</button>
-      </div>
-    </div>
-  </header>
+<header class="dashboard-header">
 
-  <main class="dashboard-main">
-    <div class="container">
+<div class="header-container">
 
-      <!-- Dashboard Title -->
-      <section class="welcome-section">
-        <h1 class="dashboard-title">Delivery Partner Dashboard</h1>
-        <p class="dashboard-subtitle">Manage your deliveries and track your eco-friendly impact</p>
-      </section>
+<a href="../home.html" class="logo">
+<span class="logo-text">ReWear</span>
+<span class="logo-leaf">♻</span>
+</a>
 
-      <!-- Stats Grid -->
-      <section class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-icon">📦</div>
-          <div class="stat-value">12</div>
-          <div class="stat-label">Active Pickups</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">₹</div>
-          <div class="stat-value">₹4,350</div>
-          <div class="stat-label">Weekly Earnings</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">🌱</div>
-          <div class="stat-value">85 km</div>
-          <div class="stat-label">Miles Traveled</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">✅</div>
-          <div class="stat-value">247</div>
-          <div class="stat-label">Deliveries Completed</div>
-        </div>
-      </section>
+<div class="header-right">
+<span class="partner-name">Hi, Delivery Partner</span>
+<button id="logout-btn" class="btn-logout">Logout</button>
+</div>
 
-      <!-- Available Pickups Section -->
-      <section class="section">
-        <div class="section-header">
-          <h2>Available Pickups Today</h2>
-          <span class="badge">3 new</span>
-        </div>
+</div>
 
-        <div class="pickups-list" id="pickups-list">
-          <div class="pickup-card">
-            <div class="pickup-header">
-              <span class="pickup-id">#PICK-8921</span>
-              <span class="pickup-priority">⚡ High Priority</span>
-            </div>
-            <div class="pickup-details">
-              <div><strong>From:</strong> Seller @ Visakhapatnam</div>
-              <div><strong>To:</strong> Customer @ Vizag Downtown</div>
-              <div><strong>Distance:</strong> 3.2 km</div>
-              <div><strong>Reward:</strong> <strong>₹150</strong> + 2 points</div>
-            </div>
-            <button class="btn-accept" data-id="8921">Accept Pickup</button>
-          </div>
+</header>
 
-          <div class="pickup-card">
-            <div class="pickup-header">
-              <span class="pickup-id">#PICK-8920</span>
-              <span class="pickup-priority">Standard</span>
-            </div>
-            <div class="pickup-details">
-              <div><strong>From:</strong> Seller @ RTC Complex</div>
-              <div><strong>To:</strong> Customer @ GITAM</div>
-              <div><strong>Distance:</strong> 5.1 km</div>
-              <div><strong>Reward:</strong> <strong>₹120</strong> + 1 point</div>
-            </div>
-            <button class="btn-accept" data-id="8920">Accept Pickup</button>
-          </div>
 
-          <div class="pickup-card">
-            <div class="pickup-header">
-              <span class="pickup-id">#PICK-8919</span>
-              <span class="pickup-priority">Standard</span>
-            </div>
-            <div class="pickup-details">
-              <div><strong>From:</strong> Seller @ Beach Road</div>
-              <div><strong>To:</strong> Customer @ Dwaraka Nagar</div>
-              <div><strong>Distance:</strong> 4.8 km</div>
-              <div><strong>Reward:</strong> <strong>₹110</strong> + 1 point</div>
-            </div>
-            <button class="btn-accept" data-id="8919">Accept Pickup</button>
-          </div>
-        </div>
-      </section>
+<main class="dashboard-main">
 
-      <!-- Active Deliveries -->
-      <section class="section">
-        <h2>Active Deliveries</h2>
-        <div class="table-container">
-          <table class="deliveries-table">
-            <thead>
-              <tr>
-                <th>Order ID</th>
-                <th>From</th>
-                <th>To</th>
-                <th>Status</th>
-                <th>Distance</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody id="active-deliveries">
-              <tr>
-                <td>#DEL-7842</td>
-                <td>Mr. Singh</td>
-                <td>Mrs. Patel</td>
-                <td><span class="status in-transit">In Transit</span></td>
-                <td>2.1 km</td>
-                <td><button class="btn-small">Update</button></td>
-              </tr>
-              <tr>
-                <td>#DEL-7841</td>
-                <td>Shop XYZ</td>
-                <td>Apartment 5B</td>
-                <td><span class="status picked">Picked Up</span></td>
-                <td>1.5 km</td>
-                <td><button class="btn-small">Start</button></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+<div class="container">
 
-      <!-- Earnings Summary -->
-      <section class="section">
-        <h2>Earnings & Rewards</h2>
-        <div class="earnings-card">
-          <div class="earnings-item">
-            <div class="earnings-label">This Week</div>
-            <div class="earnings-value">₹4,350</div>
-          </div>
-          <div class="earnings-item">
-            <div class="earnings-label">This Month</div>
-            <div class="earnings-value">₹18,920</div>
-          </div>
-          <div class="earnings-item">
-            <div class="earnings-label">Eco Points</div>
-            <div class="earnings-value">324</div>
-          </div>
-          <div class="earnings-item">
-            <div class="earnings-label">CO₂ Saved</div>
-            <div class="earnings-value">2.4 t</div>
-          </div>
-        </div>
-      </section>
+<section class="welcome-section">
 
-      <!-- Delivery History -->
-      <section class="section">
-        <h2>Recent Deliveries</h2>
-        <div class="table-container">
-          <table class="history-table">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Order ID</th>
-                <th>Items</th>
-                <th>Earnings</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Feb 7, 2026</td>
-                <td>#DEL-7838</td>
-                <td>Saree, Kurta</td>
-                <td>₹180</td>
-                <td><span class="status completed">Completed</span></td>
-              </tr>
-              <tr>
-                <td>Feb 6, 2026</td>
-                <td>#DEL-7837</td>
-                <td>Jacket</td>
-                <td>₹95</td>
-                <td><span class="status completed">Completed</span></td>
-              </tr>
-              <tr>
-                <td>Feb 5, 2026</td>
-                <td>#DEL-7836</td>
-                <td>Denim Jeans</td>
-                <td>₹110</td>
-                <td><span class="status completed">Completed</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+<h1 class="dashboard-title">Delivery Partner Dashboard</h1>
 
-    </div>
-  </main>
+<p class="dashboard-subtitle">
+Manage your deliveries and track your eco-friendly impact
+</p>
 
-  <script src="delivery-partner-dashboard.js"></script>
+</section>
+
+
+<section class="stats-grid">
+
+<div class="stat-card">
+<div class="stat-icon">📦</div>
+<div class="stat-value">12</div>
+<div class="stat-label">Active Pickups</div>
+</div>
+
+<div class="stat-card">
+<div class="stat-icon">₹</div>
+<div class="stat-value">₹4,350</div>
+<div class="stat-label">Weekly Earnings</div>
+</div>
+
+<div class="stat-card">
+<div class="stat-icon">🌱</div>
+<div class="stat-value">85 km</div>
+<div class="stat-label">Miles Traveled</div>
+</div>
+
+<div class="stat-card">
+<div class="stat-icon">✅</div>
+<div class="stat-value">247</div>
+<div class="stat-label">Deliveries Completed</div>
+</div>
+
+</section>
+
+
+<!-- Available Pickups -->
+
+<section class="section">
+
+<div class="section-header">
+
+<h2>Available Pickups Today</h2>
+
+<span class="badge">Live</span>
+
+</div>
+
+<!-- 🔥 Dynamic pickups container -->
+
+<div class="pickups-list" id="pickups-list">
+
+<p>Loading pickups...</p>
+
+</div>
+
+</section>
+
+
+
+<!-- Active Deliveries -->
+
+<section class="section">
+
+<h2>Active Deliveries</h2>
+
+<div class="table-container">
+
+<table class="deliveries-table">
+
+<thead>
+
+<tr>
+
+<th>Order ID</th>
+
+<th>From</th>
+
+<th>To</th>
+
+<th>Status</th>
+
+<th>Distance</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="active-deliveries">
+
+<tr>
+
+<td>#DEL-7842</td>
+
+<td>Seller</td>
+
+<td>Customer</td>
+
+<td><span class="status in-transit">In Transit</span></td>
+
+<td>2.1 km</td>
+
+<td><button class="btn-small">Update</button></td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+
+<!-- Earnings -->
+
+<section class="section">
+
+<h2>Earnings & Rewards</h2>
+
+<div class="earnings-card">
+
+<div class="earnings-item">
+<div class="earnings-label">This Week</div>
+<div class="earnings-value">₹4,350</div>
+</div>
+
+<div class="earnings-item">
+<div class="earnings-label">This Month</div>
+<div class="earnings-value">₹18,920</div>
+</div>
+
+<div class="earnings-item">
+<div class="earnings-label">Eco Points</div>
+<div class="earnings-value">324</div>
+</div>
+
+<div class="earnings-item">
+<div class="earnings-label">CO₂ Saved</div>
+<div class="earnings-value">2.4 t</div>
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- History -->
+
+<section class="section">
+
+<h2>Recent Deliveries</h2>
+
+<div class="table-container">
+
+<table class="history-table">
+
+<thead>
+
+<tr>
+
+<th>Date</th>
+<th>Order ID</th>
+<th>Items</th>
+<th>Earnings</th>
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>Feb 7, 2026</td>
+<td>#DEL-7838</td>
+<td>Saree</td>
+<td>₹180</td>
+<td><span class="status completed">Completed</span></td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+</div>
+
+</main>
+
+<script src="delivery-partner-dashboard.js"></script>
+
 </body>
 </html>

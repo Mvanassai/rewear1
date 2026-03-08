@@ -1,54 +1,86 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Logout
-  document.getElementById('logout-btn').addEventListener('click', () => {
-    if (confirm('Are you sure you want to logout?')) {
-      window.location.href = '../home.html';
-    }
-  });
+  const logoutBtn = document.getElementById('logout-btn');
 
-  const tableBody = document.getElementById('cloth-table-body');
-
-  // Fetch seller clothes from backend
-  async function loadClothes() {
-    try {
-
-      const response = await fetch("http://127.0.0.1:5000/api/seller/clothes");
-      const data = await response.json();
-
-      tableBody.innerHTML = "";
-
-      if (data.length === 0) {
-        tableBody.innerHTML = `<tr><td colspan="7">No clothes available</td></tr>`;
-        return;
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      if (confirm('Are you sure you want to logout?')) {
+        window.location.href = 'delivery-partner-auth.html';
       }
+    });
+  }
 
-      data.forEach(cloth => {
+  loadPickups();
 
-        const row = `
-          <tr>
-            <td>${cloth.name}</td>
-            <td>${cloth.category}</td>
-            <td>${cloth.size}</td>
-            <td>${cloth.condition}</td>
-            <td>₹${cloth.price}</td>
-            <td>${cloth.location}</td>
-            <td>
-              <img src="http://127.0.0.1:5000/${cloth.image}" width="60">
-            </td>
-          </tr>
-        `;
+});
 
-        tableBody.innerHTML += row;
+
+async function loadPickups(){
+
+  const container = document.getElementById("pickups-list");
+
+  const res = await fetch("http://127.0.0.1:5000/api/delivery/pickups");
+
+  const data = await res.json();
+
+  container.innerHTML="";
+
+  if(data.length === 0){
+    container.innerHTML = "<p>No pickups available</p>";
+    return;
+  }
+
+  data.forEach((pickup,index)=>{
+
+    const div = document.createElement("div");
+
+    div.className="pickup-card";
+
+    div.innerHTML = `
+
+      <div class="pickup-header">
+        <span class="pickup-id">#PICK-${index+1000}</span>
+        <span class="pickup-priority">${pickup.status}</span>
+      </div>
+
+      <div class="pickup-details">
+        <div><strong>Cloth:</strong> ${pickup.cloth_name}</div>
+        <div><strong>Category:</strong> ${pickup.category}</div>
+        <div><strong>Price:</strong> ₹${pickup.price}</div>
+        <div><strong>Location:</strong> ${pickup.location}</div>
+      </div>
+
+      <button class="btn-accept">Accept Pickup</button>
+
+    `;
+
+    const btn = div.querySelector(".btn-accept");
+
+    btn.addEventListener("click", async ()=>{
+
+      await fetch("http://127.0.0.1:5000/api/delivery/accept-pickup",{
+
+        method:"POST",
+
+        headers:{
+          "Content-Type":"application/json"
+        },
+
+        body: JSON.stringify({
+          cloth_name: pickup.cloth_name
+        })
 
       });
 
-    } catch (error) {
-      console.error("Error loading clothes:", error);
-      tableBody.innerHTML = `<tr><td colspan="7">Failed to load data</td></tr>`;
-    }
-  }
+      alert("Pickup Accepted!");
 
-  loadClothes();
+      btn.innerText="Accepted ✓";
+      btn.disabled=true;
 
-});
+    });
+
+    container.appendChild(div);
+
+  });
+
+}

@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const loginContainer = document.getElementById('login-form');
   const signupContainer = document.getElementById('signup-form');
 
-  // ✅ Correct FORM IDs
   const loginForm = document.getElementById('login-form-element');
   const signupForm = document.getElementById('signup-form-element');
 
@@ -32,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   showTab('login');
 
-  // ── SELLER LOGIN ─────────────────────────
+  // SELLER LOGIN
   loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -45,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
+
       const response = await fetch('http://127.0.0.1:5000/login/seller', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -54,8 +54,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = await response.json();
 
       if (response.ok) {
+
+        // ✅ STORE EMAIL
+        localStorage.setItem("sellerEmail", email);
+
         alert('Login Successful! Welcome Seller.');
-        window.location.href = "seller-dashboard.html"; // ✅ Dashboard open
+        window.location.href = "seller-dashboard.html";
+
       } else {
         alert(data.message || 'Invalid credentials');
       }
@@ -65,11 +70,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ── SELLER SIGNUP ─────────────────────────
+  // SELLER SIGNUP
   signupForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // ✅ Correct IDs (match HTML)
     const name = document.getElementById('signup-name').value;
     const email = document.getElementById('signup-email').value;
     const phone = document.getElementById('signup-phone').value;
@@ -88,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
+
       const response = await fetch('http://127.0.0.1:5000/signup/seller', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -98,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (response.ok) {
         alert('Account created successfully! Please login.');
-        showTab('login');  // ✅ After signup → Login tab ki velthundi
+        showTab('login');
       } else {
         alert(data.message || 'Signup failed');
       }
