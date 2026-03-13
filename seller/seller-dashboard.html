@@ -8,178 +8,259 @@
   <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Seller Dashboard CSS -->
   <link rel="stylesheet" href="seller-dashboard.css">
 </head>
+
 <body>
 
-  <!-- Header -->
-  <header class="dashboard-header">
-    <div class="header-container">
-      <a href="/" class="logo">
-        <span class="logo-text">ReWear</span>
-        <span class="logo-leaf">♻</span>
-      </a>
-      <div class="seller-info">
-        <span class="seller-name">Hello, Seller</span>
-        <button id="logout-btn" class="btn-logout">Logout</button>
-      </div>
-    </div>
-  </header>
+<header class="dashboard-header">
 
-  <!-- Main Content -->
-  <main class="dashboard-main">
-    <div class="container">
+<div class="header-container">
 
-      <h1 class="dashboard-title">Seller Dashboard</h1>
-      <p class="dashboard-subtitle">Manage your preloved fashion business sustainably</p>
+<a href="/" class="logo">
+<span class="logo-text">ReWear</span>
+<span class="logo-leaf">♻</span>
+</a>
 
-      <!-- Stats Overview -->
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-icon">👗</div>
-          <div class="stat-value">87</div>
-          <div class="stat-label">Clothes Listed</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">₹</div>
-          <div class="stat-value">₹12,650</div>
-          <div class="stat-label">Total Earnings</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">🚚</div>
-          <div class="stat-value">4</div>
-          <div class="stat-label">Pending Pickups</div>
-        </div>
-      </div>
+<div class="seller-info">
+<span class="seller-name">Hello, Seller</span>
+<button id="logout-btn" class="btn-logout">Logout</button>
+</div>
 
-      <!-- Add Clothes Form -->
-      <section class="section">
-        <h2>Add Clothes for Selling</h2>
-        <div class="form-card">
+</div>
+</header>
 
-          <!-- ✅ FORM (Correct ID + multipart) -->
-          <form id="add-cloth-form" enctype="multipart/form-data">
 
-            <div class="form-grid">
+<main class="dashboard-main">
 
-              <div class="form-group">
-                <label for="name">Cloth Name / Title</label>
-                <input type="text" id="name" name="name"
-                       placeholder="e.g. Cotton Saree Red" required>
-              </div>
+<div class="container">
 
-              <div class="form-group">
-                <label for="category">Category</label>
-                <select id="category" name="category" required>
-                  <option value="">Select category</option>
-                  <option>Shirt</option>
-                  <option>Jeans</option>
-                  <option>Jacket</option>
-                  <option>Dress</option>
-                  <option>T-shirt</option>
-                  <option>Saree</option>
-                  <option>Kurti</option>
-                  <option>Lehenga</option>
-                  <option>Other</option>
-                </select>
-              </div>
+<h1 class="dashboard-title">Seller Dashboard</h1>
+<p class="dashboard-subtitle">Manage your preloved fashion business sustainably</p>
 
-              <div class="form-group">
-                <label for="size">Size</label>
-                <input type="text" id="size" name="size"
-                       placeholder="M / 32 / Free Size" required>
-              </div>
 
-              <div class="form-group">
-                <label for="condition">Condition</label>
-                <select id="condition" name="condition" required>
-                  <option value="">Select condition</option>
-                  <option>New</option>
-                  <option>Like New</option>
-                  <option>Good</option>
-                  <option>Used</option>
-                  <option>Fair</option>
-                </select>
-              </div>
+<div class="stats-grid">
 
-              <div class="form-group">
-                <label for="price">Expected Price (₹)</label>
-                <input type="number" id="price" name="price"
-                       min="50" step="1" required>
-              </div>
+<div class="stat-card">
+<div class="stat-icon">👗</div>
+<div class="stat-value">87</div>
+<div class="stat-label">Clothes Listed</div>
+</div>
 
-              <div class="form-group full-width">
-                <label for="description">Description</label>
-                <textarea id="description" name="description" rows="3"
-                          placeholder="Material, color, defects..." required></textarea>
-              </div>
+<div class="stat-card">
+<div class="stat-icon">₹</div>
+<div class="stat-value">₹12,650</div>
+<div class="stat-label">Total Earnings</div>
+</div>
 
-              <div class="form-group full-width">
-                <label for="location">Location (auto-detected)</label>
-                <div class="location-group">
-                  <input type="text" id="location" name="location" readonly
-                         placeholder="Click button to detect location" required>
-                  <button type="button" id="get-location">
-                    Get Location
-                  </button>
-                </div>
-              </div>
+<div class="stat-card">
+<div class="stat-icon">🚚</div>
+<div class="stat-value">4</div>
+<div class="stat-label">Pending Pickups</div>
+</div>
 
-              <!-- ✅ FILE INPUT (Correct name=image) -->
-              <div class="form-group full-width">
-                <label for="image">Upload Photo</label>
-                <input type="file" id="image" name="image" accept="image/*" required>
-              </div>
+</div>
 
-            </div>
 
-            <button type="submit">
-              Submit Cloth for Sale
-            </button>
+<section class="section">
 
-          </form>
+<h2>Add Clothes for Selling</h2>
 
-          <div id="success-message" class="d-none">
-            Cloth added successfully!
-          </div>
-        </div>
-      </section>
+<div class="form-card">
 
-      <!-- Seller Cloth Requests -->
-      <section class="section">
+<form id="add-cloth-form" enctype="multipart/form-data">
+
+<div class="form-grid">
+
+
+<div class="form-group">
+<label for="name">Cloth Name / Title</label>
+<input type="text" id="name" name="name"
+placeholder="e.g. Cotton Saree Red" required>
+</div>
+
+
+<div class="form-group">
+<label for="category">Category</label>
+<select id="category" name="category" required>
+
+<option value="">Select category</option>
+
+<option>Shirt</option>
+<option>Jeans</option>
+<option>Jacket</option>
+<option>Dress</option>
+<option>T-shirt</option>
+<option>Saree</option>
+<option>Kurti</option>
+<option>Lehenga</option>
+<option>Other</option>
+
+</select>
+</div>
+
+
+<div class="form-group">
+<label for="size">Size</label>
+
+<input type="text" id="size" name="size"
+placeholder="M / 32 / Free Size" required>
+
+</div>
+
+
+<div class="form-group">
+<label for="condition">Condition</label>
+
+<select id="condition" name="condition" required>
+
+<option value="">Select condition</option>
+
+<option>New</option>
+<option>Like New</option>
+<option>Good</option>
+<option>Used</option>
+<option>Fair</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+<label for="price">Expected Price (₹)</label>
+
+<input type="number" id="price" name="price"
+min="50" step="1" required>
+
+</div>
+
+
+<!-- ✅ PHONE NUMBER ADDED -->
+
+<div class="form-group">
+<label for="phone">Phone Number</label>
+
+<input type="text"
+id="phone"
+name="phone"
+placeholder="Enter phone number"
+required>
+
+</div>
+
+
+<div class="form-group full-width">
+
+<label for="description">Description</label>
+
+<textarea id="description"
+name="description"
+rows="3"
+placeholder="Material, color, defects..."
+required></textarea>
+
+</div>
+
+
+<div class="form-group full-width">
+
+<label for="location">Location (auto-detected)</label>
+
+<div class="location-group">
+
+<input type="text"
+id="location"
+name="location"
+readonly
+placeholder="Click button to detect location"
+required>
+
+<button type="button" id="get-location">
+Get Location
+</button>
+
+</div>
+
+</div>
+
+
+<div class="form-group full-width">
+
+<label for="image">Upload Photo</label>
+
+<input type="file"
+id="image"
+name="image"
+accept="image/*"
+required>
+
+</div>
+
+
+</div>
+
+<button type="submit">
+Submit Cloth for Sale
+</button>
+
+</form>
+
+<div id="success-message" class="d-none">
+Cloth added successfully!
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
 <h2>My Cloth Requests</h2>
 
 <div class="card">
 
 <table>
+
 <thead>
+
 <tr>
+
 <th>Name</th>
 <th>Category</th>
 <th>Price</th>
 <th>Status</th>
+
 </tr>
+
 </thead>
 
 <tbody id="seller-cloth-table">
+
 <tr>
 <td colspan="4">Loading...</td>
 </tr>
+
 </tbody>
 
 </table>
 
 </div>
+
 </section>
 
-    </div>
-  </main>
 
-  <!-- Script -->
-  <script src="seller-dashboard.js"></script>
+</div>
+
+</main>
+
+
+<script src="seller-dashboard.js"></script>
 
 </body>
+
 </html>

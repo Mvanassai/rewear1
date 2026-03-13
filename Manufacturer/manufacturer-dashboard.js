@@ -1,86 +1,190 @@
-document.addEventListener('DOMContentLoaded', () => {
+// ─────────────────────────────────────
+// ADD PRODUCT
+// ─────────────────────────────────────
 
-  const logoutBtn = document.getElementById('logout-btn');
+const productForm = document.getElementById("add-product-form");
 
-  if (logoutBtn) {
-    logoutBtn.addEventListener('click', () => {
-      if (confirm('Are you sure you want to logout?')) {
-        window.location.href = 'delivery-partner-auth.html';
-      }
-    });
-  }
+if (productForm) {
 
-  loadPickups();
+productForm.addEventListener("submit", async (e) => {
+
+e.preventDefault();
+
+const formData = new FormData(productForm);
+
+const res = await fetch("http://127.0.0.1:5000/api/manufacturer/add-product", {
+
+method: "POST",
+body: formData
+
+});
+
+const data = await res.json();
+
+if (data.success) {
+
+alert("Product Added Successfully");
+
+productForm.reset();
+
+} else {
+
+alert("Error adding product");
+
+}
+
+});
+
+}
+
+
+// ─────────────────────────────────────
+// LOAD SELLER CLOTH REQUESTS
+// ─────────────────────────────────────
+
+document.addEventListener("DOMContentLoaded", () => {
+
+loadClothes();
 
 });
 
 
-async function loadPickups(){
+async function loadClothes() {
 
-  const container = document.getElementById("pickups-list");
+const table = document.getElementById("cloth-table-body");
 
-  const res = await fetch("http://127.0.0.1:5000/api/delivery/pickups");
+const res = await fetch("http://127.0.0.1:5000/api/seller/clothes");
 
-  const data = await res.json();
+const data = await res.json();
 
-  container.innerHTML="";
+table.innerHTML = "";
 
-  if(data.length === 0){
-    container.innerHTML = "<p>No pickups available</p>";
-    return;
-  }
+if (data.length === 0) {
 
-  data.forEach((pickup,index)=>{
+table.innerHTML = "<tr><td colspan='9'>No requests</td></tr>";
 
-    const div = document.createElement("div");
+return;
 
-    div.className="pickup-card";
+}
 
-    div.innerHTML = `
+data.forEach(cloth => {
 
-      <div class="pickup-header">
-        <span class="pickup-id">#PICK-${index+1000}</span>
-        <span class="pickup-priority">${pickup.status}</span>
-      </div>
+const row = document.createElement("tr");
 
-      <div class="pickup-details">
-        <div><strong>Cloth:</strong> ${pickup.cloth_name}</div>
-        <div><strong>Category:</strong> ${pickup.category}</div>
-        <div><strong>Price:</strong> ₹${pickup.price}</div>
-        <div><strong>Location:</strong> ${pickup.location}</div>
-      </div>
+row.innerHTML = `
 
-      <button class="btn-accept">Accept Pickup</button>
+<td>${cloth.name}</td>
+<td>${cloth.category}</td>
+<td>${cloth.size}</td>
+<td>${cloth.condition}</td>
+<td>₹${cloth.price}</td>
+<td>${cloth.location}</td>
+<td>${cloth.phone}</td>
 
-    `;
+<td>
+<img src="http://127.0.0.1:5000/${cloth.image}" width="60">
+</td>
 
-    const btn = div.querySelector(".btn-accept");
+<td>
 
-    btn.addEventListener("click", async ()=>{
+<button class="accept-btn">Accept</button>
 
-      await fetch("http://127.0.0.1:5000/api/delivery/accept-pickup",{
+<button class="reject-btn">Reject</button>
 
-        method:"POST",
+<button class="delete-btn">Delete</button>
 
-        headers:{
-          "Content-Type":"application/json"
-        },
+</td>
 
-        body: JSON.stringify({
-          cloth_name: pickup.cloth_name
-        })
+`;
 
-      });
 
-      alert("Pickup Accepted!");
+ // ─────────────────────────────
+ // ACCEPT CLOTH
+ // ─────────────────────────────
 
-      btn.innerText="Accepted ✓";
-      btn.disabled=true;
+row.querySelector(".accept-btn").addEventListener("click", async () => {
 
-    });
+await fetch("http://127.0.0.1:5000/api/seller/accept-cloth", {
 
-    container.appendChild(div);
+method: "POST",
 
-  });
+headers: {
+"Content-Type": "application/json"
+},
+
+body: JSON.stringify({
+name: cloth.name
+})
+
+});
+
+alert("Cloth Accepted");
+
+loadClothes();
+
+});
+
+
+ // ─────────────────────────────
+ // REJECT CLOTH
+ // ─────────────────────────────
+
+row.querySelector(".reject-btn").addEventListener("click", async () => {
+
+await fetch("http://127.0.0.1:5000/api/seller/reject-cloth", {
+
+method: "POST",
+
+headers: {
+"Content-Type": "application/json"
+},
+
+body: JSON.stringify({
+name: cloth.name
+})
+
+});
+
+alert("Cloth Rejected");
+
+loadClothes();
+
+});
+
+
+ // ─────────────────────────────
+ // DELETE CLOTH
+ // ─────────────────────────────
+
+row.querySelector(".delete-btn").addEventListener("click", async () => {
+
+if (confirm("Delete this cloth request?")) {
+
+await fetch("http://127.0.0.1:5000/api/seller/delete-cloth", {
+
+method: "POST",
+
+headers: {
+"Content-Type": "application/json"
+},
+
+body: JSON.stringify({
+name: cloth.name,
+seller_email: cloth.seller_email
+})
+
+});
+
+alert("Cloth Deleted");
+
+loadClothes();
+
+}
+
+});
+
+table.appendChild(row);
+
+});
 
 }

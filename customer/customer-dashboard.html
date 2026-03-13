@@ -1,231 +1,324 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My ReWear Dashboard</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>My ReWear Dashboard</title>
 
-  <link rel="stylesheet" href="customer-dashboard.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="customer-dashboard.css">
+
 </head>
+
 <body>
 
-  <!-- Header -->
-  <header class="dashboard-header">
-    <div class="container header-container">
-      <a href="/" class="logo">
-        <span class="logo-text">ReWear</span>
-        <span class="logo-leaf">♻</span>
-      </a>
+<header class="dashboard-header">
 
-      <div class="header-right">
-        <span class="user-name">Hi, Priya</span>
-        <a href="#" class="cart-icon" title="Cart">
-          <span class="cart-count">3</span>
-          🛒
-        </a>
-        <button id="logout-btn" class="btn-logout">Logout</button>
-      </div>
-    </div>
-  </header>
+<div class="container header-container">
 
-  <main class="dashboard-main">
-    <div class="container">
+<a href="/" class="logo">
+<span class="logo-text">ReWear</span>
+<span class="logo-leaf">♻</span>
+</a>
 
-      <!-- Welcome Section -->
-      <section class="welcome-section">
-        <h1>Welcome back, Priya!</h1>
-        <p class="sustainability-message">
-          Every preloved item you choose helps reduce fashion waste and save our planet ♡
-        </p>
-      </section>
+<div class="header-right">
 
-      <!-- Browse Products -->
-      <section class="section">
-        <div class="section-header">
-          <h2>Explore Recycled Fashion</h2>
-          <a href="#" class="view-all">View All →</a>
-        </div>
+<span class="user-name">Hi, Priya</span>
 
-        <div class="products-grid">
-          <!-- Product 1 -->
-          <div class="product-card">
-            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=500');"></div>
-            <div class="product-info">
-              <h3>Cotton Anarkali Kurti</h3>
-              <div class="price">₹799</div>
-              <button class="btn-add-cart">Add to Cart</button>
-            </div>
-          </div>
+<a href="#" class="cart-icon" title="Cart">
+<span class="cart-count">0</span>
+🛒
+</a>
 
-          <!-- Product 2 -->
-          <div class="product-card">
-            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=500');"></div>
-            <div class="product-info">
-              <h3>Vintage Denim Jacket</h3>
-              <div class="price">₹1,450</div>
-              <button class="btn-add-cart">Add to Cart</button>
-            </div>
-          </div>
+<button id="logout-btn" class="btn-logout">Logout</button>
 
-          <!-- Product 3 -->
-          <div class="product-card">
-            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1525507119028-ed4cdec6a6df?w=500');"></div>
-            <div class="product-info">
-              <h3>Organic Cotton T-shirt</h3>
-              <div class="price">₹499</div>
-              <button class="btn-add-cart">Add to Cart</button>
-            </div>
-          </div>
+</div>
+</div>
+</header>
 
-          <!-- Product 4 -->
-          <div class="product-card">
-            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=500');"></div>
-            <div class="product-info">
-              <h3>Handwoven Saree</h3>
-              <div class="price">₹2,199</div>
-              <button class="btn-add-cart">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <!-- Categories -->
-      <section class="section categories-section">
-        <h2>Shop by Category</h2>
-        <div class="categories-grid">
-          <a href="#" class="category-card">Men</a>
-          <a href="#" class="category-card">Women</a>
-          <a href="#" class="category-card">Kids</a>
-          <a href="#" class="category-card">Accessories</a>
-        </div>
-      </section>
+<main class="dashboard-main">
+<div class="container">
 
-      <!-- Recent Orders -->
-      <section class="section">
-        <div class="section-header">
-          <h2>Recent Orders</h2>
-          <a href="#" class="view-all">View All →</a>
-        </div>
+<!-- Welcome -->
+<section class="welcome-section">
 
-        <div class="orders-list">
-          <div class="order-item">
-            <div class="order-info">
-              <div class="order-id">#ORD-7842</div>
-              <div class="order-date">12 Jan 2026</div>
-            </div>
-            <span class="status delivered">Delivered</span>
-          </div>
+<h1>Welcome back, Priya!</h1>
 
-          <div class="order-item">
-            <div class="order-info">
-              <div class="order-id">#ORD-7819</div>
-              <div class="order-date">05 Jan 2026</div>
-            </div>
-            <span class="status delivered">Delivered</span>
-          </div>
+<p class="sustainability-message">
+Every preloved item you choose helps reduce fashion waste and save our planet ♡
+</p>
 
-          <div class="order-item">
-            <div class="order-info">
-              <div class="order-id">#ORD-7793</div>
-              <div class="order-date">28 Dec 2025</div>
-            </div>
-            <span class="status in-progress">In Progress</span>
-          </div>
-        </div>
-      </section>
+</section>
 
-      <!-- Sustainability Impact -->
-      <section class="section impact-section">
-        <h2>Your Positive Impact</h2>
-        <div class="impact-grid">
-          <div class="impact-card">
-            <div class="impact-value">4.2 kg</div>
-            <div class="impact-label">CO₂ Saved</div>
-          </div>
-          <div class="impact-card">
-            <div class="impact-value">320 L</div>
-            <div class="impact-label">Water Saved</div>
-          </div>
-          <div class="impact-card">
-            <div class="impact-value">18</div>
-            <div class="impact-label">Clothes Recycled</div>
-          </div>
-        </div>
-      </section>
 
-    </div>
-  </main>
+<!-- Products -->
+<section class="section">
 
-  <script src="customer-dashboard.js"></script>
-  <script>
-// Mini local cart system using localStorage
-let cart = JSON.parse(localStorage.getItem('rewearCart')) || [];
+<div class="section-header">
+<h2>Explore Recycled Fashion</h2>
+<a href="#" class="view-all">View All →</a>
+</div>
 
-function updateCartCount() {
-  const countEl = document.querySelector('.cart-count');
-  if (countEl) {
-    countEl.textContent = cart.length;
-    countEl.style.display = cart.length > 0 ? 'flex' : 'none';
-  }
+<div class="products-grid" id="products-grid"></div>
+
+</section>
+
+
+<!-- Categories -->
+<section class="section categories-section">
+
+<h2>Shop by Category</h2>
+
+<div class="categories-grid">
+
+<a href="#" class="category-card">Men</a>
+<a href="#" class="category-card">Women</a>
+<a href="#" class="category-card">Kids</a>
+<a href="#" class="category-card">Accessories</a>
+
+</div>
+
+</section>
+
+
+<!-- Orders -->
+<section class="section">
+
+<div class="section-header">
+<h2>Recent Orders</h2>
+<a href="#" class="view-all">View All →</a>
+</div>
+
+<div class="orders-list">
+
+<div class="order-item">
+<div class="order-info">
+<div class="order-id">#ORD-7842</div>
+<div class="order-date">12 Jan 2026</div>
+</div>
+<span class="status delivered">Delivered</span>
+</div>
+
+<div class="order-item">
+<div class="order-info">
+<div class="order-id">#ORD-7819</div>
+<div class="order-date">05 Jan 2026</div>
+</div>
+<span class="status delivered">Delivered</span>
+</div>
+
+<div class="order-item">
+<div class="order-info">
+<div class="order-id">#ORD-7793</div>
+<div class="order-date">28 Dec 2025</div>
+</div>
+<span class="status in-progress">In Progress</span>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- Impact -->
+<section class="section impact-section">
+
+<h2>Your Positive Impact</h2>
+
+<div class="impact-grid">
+
+<div class="impact-card">
+<div class="impact-value">4.2 kg</div>
+<div class="impact-label">CO₂ Saved</div>
+</div>
+
+<div class="impact-card">
+<div class="impact-value">320 L</div>
+<div class="impact-label">Water Saved</div>
+</div>
+
+<div class="impact-card">
+<div class="impact-value">18</div>
+<div class="impact-label">Clothes Recycled</div>
+</div>
+
+</div>
+
+</section>
+
+</div>
+</main>
+
+
+
+<script>
+
+const grid = document.getElementById("products-grid");
+
+async function loadProducts(){
+
+const res = await fetch("http://127.0.0.1:5000/api/products");
+
+const products = await res.json();
+
+grid.innerHTML = "";
+
+products.forEach(product => {
+
+const card = document.createElement("div");
+
+card.className = "product-card";
+
+card.innerHTML = `
+
+<div class="product-image"
+style="background-image:url('http://127.0.0.1:5000/${product.image}')">
+</div>
+
+<div class="product-info">
+
+<h3>${product.title}</h3>
+
+<div class="price">₹${product.price}</div>
+
+<button class="btn-add-cart">Add to Cart</button>
+
+</div>
+
+<div class="wishlist-toggle" title="Add to Wishlist">♡</div>
+
+`;
+
+grid.appendChild(card);
+
+});
+
+setupCart();
+
+setupWishlist();
+
 }
 
+document.addEventListener("DOMContentLoaded", loadProducts);
+
+
+
+/* CART SYSTEM */
+
+let cart = JSON.parse(localStorage.getItem('rewearCart')) || [];
+
+function updateCartCount(){
+
+const countEl = document.querySelector('.cart-count');
+
+if(countEl){
+
+countEl.textContent = cart.length;
+
+countEl.style.display = cart.length > 0 ? 'flex' : 'none';
+
+}
+
+}
+
+function setupCart(){
+
 document.querySelectorAll('.btn-add-cart').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const card = btn.closest('.product-card');
-    const name = card.querySelector('h3').textContent;
-    const price = card.querySelector('.price').textContent;
 
-    // Simple item structure
-    const item = { name, price, addedAt: new Date().toLocaleString() };
+btn.addEventListener('click', () => {
 
-    cart.push(item);
-    localStorage.setItem('rewearCart', JSON.stringify(cart));
-    updateCartCount();
+const card = btn.closest('.product-card');
 
-    btn.textContent = 'Added!';
-    btn.disabled = true;
-    btn.style.background = '#166534';
+const name = card.querySelector('h3').textContent;
 
-    setTimeout(() => {
-      btn.textContent = 'Add to Cart';
-      btn.disabled = false;
-      btn.style.background = '';
-    }, 1800);
+const price = card.querySelector('.price').textContent;
 
-    alert(`Added to cart: ${name}`);
-  });
-});
+const item = { name, price, addedAt:new Date().toLocaleString() };
 
-// Initialize cart count on load
+cart.push(item);
+
+localStorage.setItem('rewearCart', JSON.stringify(cart));
+
 updateCartCount();
-document.querySelectorAll('.wishlist-toggle').forEach(heart => {
-  // Load saved wishlist state
-  const saved = localStorage.getItem(`wish_${heart.parentElement.querySelector('h3').textContent}`);
-  if (saved === 'true') heart.classList.add('active');
 
-  heart.addEventListener('click', () => {
-    heart.classList.toggle('active');
-    const productName = heart.parentElement.querySelector('h3').textContent;
-    localStorage.setItem(`wish_${productName}`, heart.classList.contains('active'));
-    
-    alert(heart.classList.contains('active') 
-      ? `Added ${productName} to Wishlist!` 
-      : `Removed ${productName} from Wishlist`);
-  });
+btn.textContent = 'Added!';
+
+btn.disabled = true;
+
+setTimeout(()=>{
+
+btn.textContent='Add to Cart';
+
+btn.disabled=false;
+
+},1800);
+
+alert(`Added to cart: ${name}`);
+
 });
+
+});
+
+}
+
+
+
+/* WISHLIST */
+
+function setupWishlist(){
+
+document.querySelectorAll('.wishlist-toggle').forEach(heart => {
+
+const productName = heart.parentElement.querySelector('h3').textContent;
+
+const saved = localStorage.getItem(`wish_${productName}`);
+
+if(saved === 'true') heart.classList.add('active');
+
+heart.addEventListener('click', () => {
+
+heart.classList.toggle('active');
+
+localStorage.setItem(`wish_${productName}`, heart.classList.contains('active'));
+
+alert(heart.classList.contains('active')
+? `Added ${productName} to Wishlist!`
+: `Removed ${productName} from Wishlist`);
+
+});
+
+});
+
+}
+
+updateCartCount();
+
 </script>
-<div class="wishlist-toggle" title="Add to Wishlist">♡</div>
+
+
 <div id="cart-modal" class="modal" style="display:none;">
-  <div class="modal-content">
-    <span class="close-modal" onclick="document.getElementById('cart-modal').style.display='none'">×</span>
-    <h2>Your Cart</h2>
-    <div id="cart-items"></div>
-    <button onclick="alert('Checkout simulation!')">Proceed to Checkout</button>
-  </div>
+<div class="modal-content">
+
+<span class="close-modal"
+onclick="document.getElementById('cart-modal').style.display='none'">×</span>
+
+<h2>Your Cart</h2>
+
+<div id="cart-items"></div>
+
+<button onclick="alert('Checkout simulation!')">
+Proceed to Checkout
+</button>
+
 </div>
+</div>
+
+
 </body>
 </html>
